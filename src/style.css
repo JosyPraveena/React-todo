@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-image: linear-gradient(rgba(130, 129, 207, 0.616), rgba(241, 139, 43, 0.342));
+    background-size: contain;
+    background-repeat: no-repeat;
+    font-family: "Baloo Bhaina 2", cursive;
+    height: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+  }
+  
+  
+  .App h1 {
+    font-size: 5rem;
+    font-weight: 800;
+  
+    text-align: center;
+    color: white;
+  }
+
+  .Input {
+    height: 40px;
+    outline: none;
+    width: 900px;
+    font-size: 1.15rem;
+  
+    border: none;
+  }
+
+  .CharacterCheck{
+    display: flex;
+    justify-content: center;
+    font-family: "Gotu";
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 400;
+    padding-top: 20px;
+  }
+
+  .AddTodoSection{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .Itemcheckbox{
+    width: 20px;
+    height: 20px;
+    margin: 1% 1%;
+  }
+
+  li{
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 900px;
+    margin: 1rem;
+  }
+
+  .Deletebutton{
+    background-color: rgba(255, 0, 0, 0.445);
+    color: white;
+    font-weight: bold;
+    padding: 0 2%;
+    border: none;
+    cursor: pointer;
+  }
