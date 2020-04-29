@@ -46,8 +46,6 @@ class App extends React.Component {
       list: updateList
     })
   }
-<<<<<<< HEAD
-
   handleChecked (e, id) {
 
     let newlist = this.state.list.map(each => {
