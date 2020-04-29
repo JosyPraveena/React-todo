@@ -4,16 +4,16 @@ import './style.css';
 
 
 class App extends React.Component {
-  constructor(){
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       todo: "",
       list: []
     }
   }
 
- 
-  addItem = (e) =>{
+
+  addItem = (e) => {
     e.preventDefault();
     const todo = {
       id: 1+Math.random(),
@@ -28,24 +28,25 @@ class App extends React.Component {
      alert("Please enter your todo");
     this.setState({
       list,
-      todo:""
+      todo: ""
     })
   
   }
 
-  updateTodo = (key,value) =>{
-      this.setState({
-        [key] : value
-      })
+  updateTodo = (key, value) => {
+    this.setState({
+      [key]: value
+    })
   }
 
-  deleteTodo = (id) =>{
+  deleteTodo = (id) => {
     const list = [...this.state.list]
     const updateList = list.filter(item => item.id !== id)
     this.setState({
       list: updateList
     })
   }
+<<<<<<< HEAD
 
   handleChecked (e, id) {
 
@@ -88,8 +89,7 @@ render(){
                         )
                     })}
                 </ul>
-                   
-       </div>
+                </div>
   );
 }
 }
