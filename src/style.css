@@ -75,3 +75,11 @@
     border: none;
     cursor: pointer;
   }
+
+  .iscompleted {
+    text-decoration: line-through;
+  }
+
+  .notcompleted {
+    text-decoration: none;
+  }

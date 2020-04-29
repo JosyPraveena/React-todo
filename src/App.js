@@ -17,15 +17,20 @@ class App extends React.Component {
     e.preventDefault();
     const todo = {
       id: 1+Math.random(),
-      value: this.state.todo
+      value: this.state.todo, 
+      complete: false
     }
 
-    const list = [...this.state.list,todo]
-
+    let list = [...this.state.list]
+    if(this.state.todo.length>1)
+     list.push(todo);
+     else 
+     alert("Please enter your todo");
     this.setState({
       list,
       todo:""
     })
+  
   }
 
   updateTodo = (key,value) =>{
@@ -41,7 +46,25 @@ class App extends React.Component {
       list: updateList
     })
   }
-  
+
+  handleChecked (e, id) {
+
+    let newlist = this.state.list.map(each => {
+      if(each["id"] === id){
+        if (e.target.checked) {
+          each["complete"] = true;
+        }
+        
+        else {
+          each["complete"] = false;
+        }
+      }
+      return each;
+    });
+    this.setState({
+      list: newlist
+    });
+  }
 
 render(){
   return (
@@ -58,8 +81,8 @@ render(){
                     {this.state.list.map(each =>{
                         return (
                         <li key = {each.id}>
-                            <input className="Itemcheckbox"  type="checkbox"/>
-                            {each.value}
+                            <input onClick = {(e)=>this.handleChecked(e,each.id)} className="Itemcheckbox"  type="checkbox"/>
+                            <p className = {each.complete ? "iscompleted" : "notcompleted"}>{each.value}</p>
                         <button className = "Deletebutton" onClick = {() => this.deleteTodo(each.id) }>X</button>
                         </li>
                         )
