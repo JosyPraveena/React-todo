@@ -2,7 +2,6 @@ import React from 'react';
 import './style.css';
 //import AddItem from "./AddItem"
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -49,7 +48,7 @@ class App extends React.Component {
   handleChecked (e, id) {
 
     let newlist = this.state.list.map(each => {
-      if(each["id"] === id){
+      if(each.id === id){
         if (e.target.checked) {
           each["complete"] = true;
         }
@@ -64,6 +63,20 @@ class App extends React.Component {
       list: newlist
     });
   }
+
+  handleEditChange = (id,newValue) =>{ 
+    let editedListTodo = this.state.list.map(each=> {
+      if(each.id === id){
+        each["value"] = newValue;
+      }
+      return each
+      })
+      console.log(editedListTodo);
+      this.setState({
+        list: editedListTodo
+    })
+  }
+
 
 render(){
   return (
@@ -81,7 +94,11 @@ render(){
                         return (
                         <li key = {each.id}>
                             <input onClick = {(e)=>this.handleChecked(e,each.id)} className="Itemcheckbox"  type="checkbox"/>
-                            <p className = {each.complete ? "iscompleted" : "notcompleted"}>{each.value}</p>
+                            <input 
+                            className = {each.complete ? "iscompleted" : "notcompleted"} 
+                            type="text"
+                            value={each.value}
+                            onChange = {(e) => this.handleEditChange(each.id,e.target.value)}></input>
                         <button className = "Deletebutton" onClick = {() => this.deleteTodo(each.id) }>X</button>
                         </li>
                         )
@@ -93,5 +110,3 @@ render(){
 }
 
 export default App;
-
-

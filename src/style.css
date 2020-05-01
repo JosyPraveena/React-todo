@@ -78,8 +78,35 @@
 
   .iscompleted {
     text-decoration: line-through;
+    background-color: transparent;
+    border: none;
+    font-size: 1.15rem;
+    font-family: "Baloo Bhaina 2", cursive;
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
   }
 
   .notcompleted {
     text-decoration: none;
+    background-color: transparent;
+    border: none;
+    font-size: 1.15rem;
+    font-family: "Baloo Bhaina 2", cursive;
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    text-align: center; }
+
+  .iscompleted:focus{
+    outline: none;
   }
+
+  .notcompleted:focus{
+    outline: none;
+  }
+.iscompleted:read-only{
+  background-color: white;
+}
+
