@@ -77,11 +77,6 @@ class App extends React.Component {
     })
   }
 
-  handleInputLength = () => {
-
-
-  }
-
 
   render() {
     return (
