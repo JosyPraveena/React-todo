@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.css';
+import RemainigChars from "./RemainingChars"
 //import AddItem from "./AddItem"
 
 class App extends React.Component {
@@ -7,35 +8,33 @@ class App extends React.Component {
     super(props);
     this.state = {
       todo: "",
-      list: []
+      list: [],
+      todoLength: null,
     }
   }
-
 
   addItem = (e) => {
     e.preventDefault();
     const todo = {
-      id: 1+Math.random(),
-      value: this.state.todo, 
+      id: 1 + Math.random(),
+      value: this.state.todo,
       complete: false
     }
 
     let list = [...this.state.list]
-    if(this.state.todo.length>1)
-     list.push(todo);
-     else 
-     alert("Please enter your todo");
+    if (this.state.todo.length > 1)
+      list.push(todo);
+    else
+      alert("Please enter your todo");
     this.setState({
       list,
-      todo: ""
+      todo: "",
     })
-  
   }
 
   updateTodo = (key, value) => {
-    this.setState({
-      [key]: value
-    })
+    this.setState({ [key]: value.slice(0, 100) })
+
   }
 
   deleteTodo = (id) => {
@@ -45,14 +44,15 @@ class App extends React.Component {
       list: updateList
     })
   }
-  handleChecked (e, id) {
+
+  handleChecked(e, id) {
 
     let newlist = this.state.list.map(each => {
-      if(each.id === id){
+      if (each.id === id) {
         if (e.target.checked) {
           each["complete"] = true;
         }
-        
+
         else {
           each["complete"] = false;
         }
@@ -64,49 +64,55 @@ class App extends React.Component {
     });
   }
 
-  handleEditChange = (id,newValue) =>{ 
-    let editedListTodo = this.state.list.map(each=> {
-      if(each.id === id){
+  handleEditChange = (id, newValue) => {
+    let editedListTodo = this.state.list.map(each => {
+      if (each.id === id) {
         each["value"] = newValue;
       }
       return each
-      })
-      console.log(editedListTodo);
-      this.setState({
-        list: editedListTodo
+    })
+    console.log(editedListTodo);
+    this.setState({
+      list: editedListTodo
     })
   }
 
+  handleInputLength = () => {
 
-render(){
-  return (
-    <div className="App">
-          <h1>The List</h1>
-          <div className="AddTodoSection">
-                <form onSubmit = {(e)=>this.addItem(e)}>
-                    <input value = {this.state.todo}  className="Input" type="text" placeholder=" What do you want to do?" 
-                    onChange = {e => this.updateTodo("todo",e.target.value)}/>
-                    </form>
-                    </div>
-                    <br/>
-                    <ul>
-                    {this.state.list.map(each =>{
-                        return (
-                        <li key = {each.id}>
-                            <input onClick = {(e)=>this.handleChecked(e,each.id)} className="Itemcheckbox"  type="checkbox"/>
-                            <input 
-                            className = {each.complete ? "iscompleted" : "notcompleted"} 
-                            type="text"
-                            value={each.value}
-                            onChange = {(e) => this.handleEditChange(each.id,e.target.value)}></input>
-                        <button className = "Deletebutton" onClick = {() => this.deleteTodo(each.id) }>X</button>
-                        </li>
-                        )
-                    })}
-                </ul>
-                </div>
-  );
-}
+
+  }
+
+
+  render() {
+    return (
+      <div className="App">
+        <h1>The List</h1>
+        <div className="AddTodoSection">
+          <form onSubmit={(e) => this.addItem(e)}>
+            <input value={this.state.todo} className="Input" type="text" placeholder=" What do you want to do?"
+              onChange={e => this.updateTodo("todo", e.target.value)} />
+          </form>
+        </div>
+        <RemainigChars length={this.state.todo.length} />
+        <br />
+        <ul>
+          {this.state.list.map(each => {
+            return (
+              <li key={each.id}>
+                <input onClick={(e) => this.handleChecked(e, each.id)} className="Itemcheckbox" type="checkbox" />
+                <input
+                  className={each.complete ? "iscompleted" : "notcompleted"}
+                  type="text"
+                  value={each.value}
+                  onChange={(e) => this.handleEditChange(each.id, e.target.value)}></input>
+                <button className="Deletebutton" onClick={() => this.deleteTodo(each.id)}>X</button>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+    );
+  }
 }
 
 export default App;
