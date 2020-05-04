@@ -1,15 +1,13 @@
 import React from 'react';
 import './style.css';
 import RemainigChars from "./RemainingChars"
-//import AddItem from "./AddItem"
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       todo: "",
-      list: [],
-      todoLength: null,
+      list: []
     }
   }
 
@@ -28,7 +26,7 @@ class App extends React.Component {
       alert("Please enter your todo");
     this.setState({
       list,
-      todo: "",
+      todo: ""
     })
   }
 

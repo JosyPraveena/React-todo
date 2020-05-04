@@ -30,19 +30,8 @@
     height: 40px;
     outline: none;
     width: 900px;
-    font-size: 1.15rem;
-  
-    border: none;
-  }
-
-  .CharacterCheck{
-    display: flex;
-    justify-content: center;
-    font-family: "Gotu";
     font-size: 1rem;
-    font-style: italic;
-    font-weight: 400;
-    padding-top: 20px;
+    border: none;
   }
 
   .AddTodoSection{
@@ -80,28 +69,27 @@
     text-decoration: line-through;
     background-color: transparent;
     border: none;
-    font-size: 1.15rem;
+    font-size: 1rem;
     font-family: "Baloo Bhaina 2", cursive;
     width: 600px;
     display: flex;
     justify-content: center;
     text-align: center;
-    overflow-wrap: break-word;
-  word-wrap: break-word;;
+    width: 850px;
+
   }
 
   .notcompleted {
     text-decoration: none;
     background-color: transparent;
     border: none;
-    font-size: 1.15rem;
+    font-size: 1rem;
     font-family: "Baloo Bhaina 2", cursive;
     width: 600px;
     display: flex;
     justify-content: center;
     text-align: center; 
-    overflow-wrap: break-word;
-  word-wrap: break-word;}
+    width: 850px;}
 
   .iscompleted:focus{
     outline: none;
