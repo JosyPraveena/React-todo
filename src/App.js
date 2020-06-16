@@ -48,11 +48,11 @@ class App extends React.Component {
     let newlist = this.state.list.map(each => {
       if (each.id === id) {
         if (e.target.checked) {
-          each["complete"] = true;
+          each.complete = true;
         }
 
         else {
-          each["complete"] = false;
+          each.complete = false;
         }
       }
       return each;
@@ -65,11 +65,10 @@ class App extends React.Component {
   handleEditChange = (id, newValue) => {
     let editedListTodo = this.state.list.map(each => {
       if (each.id === id) {
-        each["value"] = newValue;
+        each.value = newValue;
       }
       return each
     })
-    console.log(editedListTodo);
     this.setState({
       list: editedListTodo
     })
